@@ -1,0 +1,48 @@
+package texteditor150;
+
+{$R *.res}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$IMPLICITBUILD OFF}
+
+requires
+  rtl,
+  vcl,
+  SynEdit_R2011,
+  vclx,
+  vcldb,
+  dbrtl,
+  dsnap,
+  VclSmp,
+  designide,
+  xmlrtl,
+  vclactnband;
+
+contains
+  frame_texteditor in 'frame_texteditor.pas',
+  fm_texteditor in 'fm_texteditor.pas' {FmTextEditor},
+  dlgSearchText in 'dialogs\dlgSearchText.pas',
+  dlgConfirmReplace in 'dialogs\dlgConfirmReplace.pas',
+  dlgReplaceText in 'dialogs\dlgReplaceText.pas',
+  VkSynEdit in 'VkSynEdit.pas';
+
+end.

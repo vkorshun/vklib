@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{58F7FF69-3496-45C4-A4C8-BC15636016AA}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="dbgridehvkd_xe6.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\vkcomponents_xe6.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="dbgridehvkd_xe6">
+        <MSBuild Projects="dbgridehvkd_xe6.dproj"/>
+    </Target>
+    <Target Name="dbgridehvkd_xe6:Clean">
+        <MSBuild Projects="dbgridehvkd_xe6.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="dbgridehvkd_xe6:Make">
+        <MSBuild Projects="dbgridehvkd_xe6.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="vkcomponents_xe6">
+        <MSBuild Projects="..\vkcomponents_xe6.dproj"/>
+    </Target>
+    <Target Name="vkcomponents_xe6:Clean">
+        <MSBuild Projects="..\vkcomponents_xe6.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="vkcomponents_xe6:Make">
+        <MSBuild Projects="..\vkcomponents_xe6.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="dbgridehvkd_xe6;vkcomponents_xe6"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="dbgridehvkd_xe6:Clean;vkcomponents_xe6:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="dbgridehvkd_xe6:Make;vkcomponents_xe6:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

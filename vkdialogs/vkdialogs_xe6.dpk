@@ -1,0 +1,55 @@
+package vkdialogs_xe6;
+
+{$R *.res}
+{$IFDEF IMPLICITBUILDING This IFDEF should not be used by users}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO OFF}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION OFF}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO OFF}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES ON}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DEFINE DEBUG}
+{$ENDIF IMPLICITBUILDING}
+{$IMPLICITBUILD ON}
+
+requires
+  rtl,
+  vcl,
+  dbrtl,
+  VclSmp,
+  vclx,
+  vkcomponents_xe6,
+  vcldb,
+  vklib_xe6,
+  vclactnband,
+  xmlrtl;
+
+contains
+  fm_alert in 'fm_alert.pas' {FmAlert},
+  fm_childmdi in 'fm_childmdi.pas' {FmChildMdi},
+  fm_wait in 'fm_wait.pas' {FmWait},
+  TaskBarButton in 'TaskBarButton.pas' {ButtonForm},
+  ActionManagerDescription in 'ActionManagerDescription.pas',
+  selectmeditbox in 'selectmeditbox.pas',
+  SignalThreadUnit in 'SignalThreadUnit.pas',
+  vkvariablebindingdialog in 'DOC\vkvariablebindingdialog.pas',
+  fmSimpleDialog in 'DOC\fmSimpleDialog.pas' {SimpleDialogFm},
+  fmVkDocDialog in 'DOC\fmVkDocDialog.pas' {VkDocDialogFm},
+  ControlPair in 'DOC\ControlPair.pas';
+
+end.

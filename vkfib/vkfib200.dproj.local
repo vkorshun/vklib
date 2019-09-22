@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899.12.30 00:00:00.000.pas,C:\Program Files\CodeGear\RAD Studio\OTHER\VKLIB\vkfib\FIBDatabaseVk.pas=</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.dproj,C:\Documents and Settings\vk\Мои документы\RAD Studio\Projects\Package1.dproj=C:\Program Files\CodeGear\RAD Studio\OTHER\VKLIB\vkfib\vkfib120.dproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.188,C:\THIRDLIB.XE6\VKLIB\vkfib\vkfib120.dproj=C:\THIRDLIB.XE6\VKLIB\vkfib\vkfib200.dproj</Transaction>
+  </Transactions>
+</BorlandProject>

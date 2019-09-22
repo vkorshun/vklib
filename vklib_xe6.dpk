@@ -1,0 +1,57 @@
+package vklib_xe6;
+
+{$R *.res}
+{$IFDEF IMPLICITBUILDING This IFDEF should not be used by users}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO OFF}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION OFF}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES ON}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DEFINE DEBUG}
+{$ENDIF IMPLICITBUILDING}
+{$RUNONLY}
+{$IMPLICITBUILD ON}
+
+requires
+  rtl,
+  vcl,
+  xmlrtl,
+  dbrtl,
+  vcldb,
+  EhLib200;
+
+contains
+  vararrayutil in 'vararrayutil.pas',
+  MInWord in 'minword\MInWord.pas',
+  DateVk in 'DateVk.pas',
+  u_xmlinit in 'XMLInit\u_xmlinit.pas',
+  i_vkinterface in 'i_vkinterface.pas',
+  monitor in 'monitor.pas',
+  variantvalue in 'variantvalue.pas',
+  sqldescription in 'sqldescription.pas',
+  xlsreport in 'xlsreport.pas',
+  xbase_utils in 'xbase_utils.pas',
+  DecimalRounding_JH1 in 'DecimalRounding_JH1.pas',
+  hostdate in 'hostdate.pas',
+  variantutils in 'variantutils.pas',
+  vkvariable in 'VKVARIABLES\vkvariable.pas',
+  vkvariablebinding in 'VKVARIABLES\vkvariablebinding.pas',
+  vkvariablebindingcustom in 'VKVARIABLES\vkvariablebindingcustom.pas';
+
+end.

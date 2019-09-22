@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<ProjectSortOrder AutoSort="0" SortType="0">
+    <File Path="DOC"/>
+    <File Path="DOC\ControlPair.pas"/>
+    <File Path="DOC\fmSimpleDialog.pas"/>
+    <File Path="DOC\fmSimpleDialog.dfm"/>
+    <File Path="DOC\fmVkDocDialog.pas"/>
+    <File Path="DOC\fmVkDocDialog.dfm"/>
+    <File Path="DOC\vkvariablebindingdialog.pas"/>
+    <File Path="ActionManagerDescription.pas"/>
+    <File Path="actionmanagerdescription.rc"/>
+    <File Path="fm_alert.pas"/>
+    <File Path="fm_alert.dfm"/>
+    <File Path="fm_childmdi.pas"/>
+    <File Path="fm_childmdi.dfm"/>
+    <File Path="fm_wait.pas"/>
+    <File Path="fm_wait.dfm"/>
+    <File Path="selectmeditbox.pas"/>
+    <File Path="SignalThreadUnit.pas"/>
+    <File Path="TaskBarButton.pas"/>
+    <File Path="TaskBarButton.dfm"/>
+    <File Path="dbrtl.dcp"/>
+    <File Path="rtl.dcp"/>
+    <File Path="vcl.dcp"/>
+    <File Path="vclactnband.dcp"/>
+    <File Path="vcldb.dcp"/>
+    <File Path="VclSmp.dcp"/>
+    <File Path="vclx.dcp"/>
+    <File Path="vkcomponents_xe6.dcp"/>
+    <File Path="vklib_xe6.dcp"/>
+    <File Path="xmlrtl.dcp"/>
+  </ProjectSortOrder>
+</BorlandProject>

@@ -1,0 +1,36 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{296E51CD-94B7-4DB5-88F5-13539A5B88DF}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="vkcomponents150.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="vkcomponents150">
+        <MSBuild Projects="vkcomponents150.dproj"/>
+    </Target>
+    <Target Name="vkcomponents150:Clean">
+        <MSBuild Projects="vkcomponents150.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="vkcomponents150:Make">
+        <MSBuild Projects="vkcomponents150.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="vkcomponents150"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="vkcomponents150:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="vkcomponents150:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
