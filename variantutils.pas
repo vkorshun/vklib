@@ -15,6 +15,11 @@ implementation
 
 function VariantIsEmpty(const AData:variant):Boolean;
 begin
+  if (VarIsArray(AData)) then
+  begin
+    Result := VarArrayHighBound(AData,1)>0;
+  end
+  else
   case TVarData(AData).VType of
     varEmpty, varNull: Result := True;
     varBoolean: Result := TVarData(AData).VBoolean = False;
@@ -55,8 +60,34 @@ begin
     Result := VariantToStr(v1) = VariantToStr(v2);
 end;
 
+function VarArrayToStr(const AData:Variant):String;
+var i: Integer;
+    sb: TStringBuilder;
+begin
+  sb := TStringBuilder.Create;
+  sb.Append('{');
+  try
+    for i:=VarArrayLowBound(AData,1) to VarArrayHighBound(AData,1) do
+    begin
+      sb.Append(VariantToStr(AData[i]));
+      if i<VarArrayHighBound(AData,1) then
+        sb.Append(',');
+    end;
+    sb.Append('}');
+  finally
+    Result :=  sb.ToString;
+    sb.Free;
+  end;
+
+end;
+
 function VariantToStr(const AData:Variant):String;
 begin
+  if VarIsArray(AData) then
+  begin
+    Result := VarArrayToStr(AData);
+  end
+  else
   case TVarData(AData).VType of
     varEmpty, varNull: Result := '';
     varBoolean: Result := 'False';
@@ -100,7 +131,10 @@ end;
 
 function VariantIsNull(AData:Variant): Boolean;
 begin
-  Result :=  VarIsNull(AData) or VarIsClear(AData);
+  if VarIsArray(AData) then
+    Result := False
+  else
+    Result :=  VarIsNull(AData) or (AData = Unassigned);
 end;
 
 function VariantIsEmptyAsDate(const AData:Variant):Boolean;

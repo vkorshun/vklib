@@ -44,6 +44,7 @@ type
     procedure SetOnInternalChangevariable(const Value: TNotifyEvent);
     function GetAsLargeInt: Int64;
     procedure SetAsLargeInt(const Value: Int64);
+    function GetData: Variant;
   protected
     FOnChangeVariable: TNotifyEvent;
     FOnInternalChangeVariable: TNotifyEvent;
@@ -62,7 +63,7 @@ type
     property AsString: string read GetAsString write SetAsString;
     property IsNull: Boolean read GetIsNull;
     property Name: string read FName write SetName;
-    property Value: Variant read FData write SetData;
+    property Value: Variant read GetData write SetData;
     property OldValue: Variant read FOldValue write FOldValue;
     property InitValue: Variant read FInitData write SetInitData;
     property IsDelta: Boolean read FIsDelta write FIsDelta;
@@ -256,12 +257,27 @@ end;
 
 function TCustomVkVariable.GetAsString: string;
 begin
-  Result :=  IfVarEmpty(FData,'');
+  if getIsNull then
+    Result :=  ''
+  else
+    Result := FData;
+end;
+
+function TCustomVkVariable.GetData: Variant;
+var vt: Integer;
+begin
+  vt := VarType(FData) and VarTypeMask;
+
+  if vt = varString then
+    Result := String(FData)
+  else
+    Result := FData;
 end;
 
 function TCustomVkVariable.GetIsNull: Boolean;
 begin
-  Result := (FData = Unassigned) or VarIsNull(FData) or VarIsClear(FData);
+  Result := VarIsNull(FData);
+  //or VarIsNull(FData); // or VarIsClear(FData);
 end;
 
 class function TCustomVkVariable.IsEmptyString(const AValue: Variant): Boolean;
@@ -398,7 +414,11 @@ begin
     OldValue := Self.Value;
     FData := Value;
     DoInternalChangeVariable;
-  end;
+  end
+  {else
+    if Value <> unassigned then
+      DoInternalChangeVariable;
+   }
 end;
 
 procedure TCustomVkVariable.SetInitData(const Value: Variant);

@@ -1,2 +1,40 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<BorlandProject/>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899.12.30 00:00:00.000.500,=C:\THIRDLIB.XE6\VKLIB\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.185,=C:\THIRDLIB.XE6\VKLIB\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.870,C:\THIRDLIB.XE6\VKLIB\VKVARIABLES\doc.vkvariablelist.pas=C:\THIRDLIB.XE6\VKLIB\VKVARIABLES\doc.variablelist.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.669,C:\THIRDLIB.XE6\VKLIB\VKVARIABLES\doc.vkvariable.pas=C:\THIRDLIB.XE6\VKLIB\VKVARIABLES\doc.variable.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.463,C:\THIRDLIB.XE6\VKLIB\Unit1.pas=C:\THIRDLIB.XE6\VKLIB\VKVARIABLES\doc.vkvariable.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.924,C:\THIRDLIB.XE6\VKLIB\Unit1.pas=C:\THIRDLIB.XE6\VKLIB\VKVARIABLES\doc.vkvariablelist.pas</Transaction>
+  </Transactions>
+	<ProjectSortOrder AutoSort="0" SortType="0">
+    <File Path="minword"/>
+    <File Path="minword\MInWord.pas"/>
+    <File Path="VKVARIABLES"/>
+    <File Path="VKVARIABLES\doc.variable.pas"/>
+    <File Path="VKVARIABLES\doc.variablelist.pas"/>
+    <File Path="VKVARIABLES\vkvariable.pas"/>
+    <File Path="VKVARIABLES\vkvariablebinding.pas"/>
+    <File Path="VKVARIABLES\vkvariablebindingcustom.pas"/>
+    <File Path="XMLInit"/>
+    <File Path="XMLInit\u_xmlinit.pas"/>
+    <File Path="DateVk.pas"/>
+    <File Path="DecimalRounding_JH1.pas"/>
+    <File Path="hostdate.pas"/>
+    <File Path="i_vkinterface.pas"/>
+    <File Path="monitor.pas"/>
+    <File Path="sqldescription.pas"/>
+    <File Path="vararrayutil.pas"/>
+    <File Path="variantutils.pas"/>
+    <File Path="variantvalue.pas"/>
+    <File Path="xbase_utils.pas"/>
+    <File Path="xlsreport.pas"/>
+    <File Path="dbrtl.dcp"/>
+    <File Path="EhLib200.dcp"/>
+    <File Path="rtl.dcp"/>
+    <File Path="vcl.dcp"/>
+    <File Path="vcldb.dcp"/>
+    <File Path="xmlrtl.dcp"/>
+  </ProjectSortOrder>
+</BorlandProject>

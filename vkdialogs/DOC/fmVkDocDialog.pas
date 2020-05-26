@@ -71,6 +71,7 @@ type
     FVariableCollection: TVkVariableCollection;
     FOnActionUpdate: TNotifyEvent;
     FControlPairList: TControlPairList;
+    FOnSaveData: TBoolFunction;
     function GetMaxFLen: Integer;
     function GetMaxFy: Integer;
 //    procedure AddPageDescribe(AControl: TWinControl; AFx,AFy,ALen: Integer);
@@ -135,6 +136,7 @@ type
     property cargo: Integer read Ftag write Ftag;
     property OnActionUpdate:TNotifyEvent read FOnActionUpdate write SetOnActionUpdate;
     property InternalVariables: TVkVariableCollection read FVariableCollection;
+    property OnSaveData: TBoolFunction read FOnSaveData write FOnSaveData;
   end;
 
 function GetLocateLine(oOwner: TObject; sTitle: String; sCaption: String;
@@ -646,6 +648,9 @@ begin
   begin
     if Assigned(OnValidData) then
       CanClose := OnValidData(Self);
+    if CanClose and Assigned(OnSaveData) then
+      CanClose := OnSaveData(Self);
+
   end;
 
 end;

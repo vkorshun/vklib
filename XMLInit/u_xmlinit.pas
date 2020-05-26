@@ -356,7 +356,10 @@ var node: IXMLNode;
     key2:String;
 begin
   key2     :=Key;
-  node     := FCurrentNode;
+  if Assigned(FCurrentNode) then
+     node     := FCurrentNode
+  else
+     node := FRootNode;
   nodename := GetNextKey(Key);
   if UpperCase(nodename)='ROOT' then
   begin

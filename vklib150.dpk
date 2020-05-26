@@ -1,40 +1,37 @@
-package vklib_xe6;
+package vklib150;
 
 {$R *.res}
-{$IFDEF IMPLICITBUILDING This IFDEF should not be used by users}
 {$ALIGN 8}
 {$ASSERTIONS ON}
 {$BOOLEVAL OFF}
-{$DEBUGINFO OFF}
+{$DEBUGINFO ON}
 {$EXTENDEDSYNTAX ON}
 {$IMPORTEDDATA ON}
 {$IOCHECKS ON}
 {$LOCALSYMBOLS ON}
 {$LONGSTRINGS ON}
 {$OPENSTRINGS ON}
-{$OPTIMIZATION OFF}
+{$OPTIMIZATION ON}
 {$OVERFLOWCHECKS OFF}
 {$RANGECHECKS OFF}
 {$REFERENCEINFO ON}
 {$SAFEDIVIDE OFF}
-{$STACKFRAMES ON}
+{$STACKFRAMES OFF}
 {$TYPEDADDRESS OFF}
 {$VARSTRINGCHECKS ON}
 {$WRITEABLECONST OFF}
 {$MINENUMSIZE 1}
 {$IMAGEBASE $400000}
-{$DEFINE DEBUG}
-{$ENDIF IMPLICITBUILDING}
 {$RUNONLY}
-{$IMPLICITBUILD ON}
+{$IMPLICITBUILD OFF}
 
 requires
   rtl,
   vcl,
   xmlrtl,
   dbrtl,
-  vcldb,
-  EhLib200;
+  dclOfficeXP,
+  EhLib150;
 
 contains
   vararrayutil in 'vararrayutil.pas',
@@ -52,8 +49,6 @@ contains
   variantutils in 'variantutils.pas',
   vkvariable in 'VKVARIABLES\vkvariable.pas',
   vkvariablebinding in 'VKVARIABLES\vkvariablebinding.pas',
-  vkvariablebindingcustom in 'VKVARIABLES\vkvariablebindingcustom.pas',
-  doc.variablelist in 'VKVARIABLES\doc.variablelist.pas',
-  doc.variable in 'VKVARIABLES\doc.variable.pas';
+  vkvariablebindingcustom in 'VKVARIABLES\vkvariablebindingcustom.pas';
 
 end.

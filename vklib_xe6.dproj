@@ -120,6 +120,8 @@
         <DCCReference Include="VKVARIABLES\vkvariable.pas"/>
         <DCCReference Include="VKVARIABLES\vkvariablebinding.pas"/>
         <DCCReference Include="VKVARIABLES\vkvariablebindingcustom.pas"/>
+        <DCCReference Include="VKVARIABLES\doc.variablelist.pas"/>
+        <DCCReference Include="VKVARIABLES\doc.variable.pas"/>
         <BuildConfiguration Include="Debug">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -170,7 +172,7 @@
                     <VersionInfoKeys Name="Comments"/>
                 </VersionInfoKeys>
                 <Excluded_Packages>
-                    <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\14.0\Bpl\DclEhLib200.bpl">EhLib 6.3 Components</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\14.0\Bpl\EhLib200.bpl">EhLib 9.4</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\dcloffice2k200.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\dclofficexp200.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
                 </Excluded_Packages>
