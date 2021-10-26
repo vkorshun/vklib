@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, SynEditRegexSearch, SynEditOptionsDialog, SynEditMiscClasses,
   SynEditSearch, SynEditHighlighter, SynHighlighterCAC, Menus, ComCtrls,
-  SynEdit, StdCtrls, Registry;
+  SynEdit, StdCtrls, Registry, System.UITypes;
 
 //uses
 //  SysUtils, Classes, Controls, SynEdit,Registry,Windows;

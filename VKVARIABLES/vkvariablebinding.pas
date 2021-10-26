@@ -3,7 +3,7 @@ unit vkvariablebinding;
 interface
 
 uses
-  SysUtils, WinTypes, WinProcs, Messages, Classes, Controls, StdCtrls, Forms, Dialogs,
+  SysUtils, WinTypes, WinProcs, Messages, Classes, Controls, Vcl.StdCtrls, Vcl.Forms, Vcl.Dialogs,
   Variants, Db, vkvariable, variantutils, vkvariablebindingcustom;
 
 type
@@ -57,8 +57,9 @@ procedure TVkVariableBinding.ClearControl;
 begin
   if Assigned(FoControl) then
   begin
-    TEdit(FoControl).OnChange := FCurrentOnChange;
-    FoControl := nil;
+    if Assigned(FCurrentOnChange) and IsControlHasProperty(FOControl, 'OnChange') then
+      TEdit(FoControl).OnChange := FCurrentOnChange;
+//    FoControl := nil;
   end;
   FoControl := nil;
 end;
@@ -88,12 +89,15 @@ begin
   else
   begin
     FoControl := AControl;
-    if Assigned(TEdit(AControl).OnChange) then
+    if IsControlHasProperty(FOControl, 'OnChange') then
     begin
-      FCurrentOnChange := TEdit(AControl).OnChange;
-    end;
-    TEdit(AControl).OnChange := DoChange;
+      if Assigned(TEdit(AControl).OnChange) then
+      begin
+        FCurrentOnChange := TEdit(AControl).OnChange;
+      end;
+      TEdit(AControl).OnChange := DoChange;
 
+    end;
     if Assigned(FOnSetControl) then
       FOnSetControl(self);
     SetControlValue(FVariable.Value);

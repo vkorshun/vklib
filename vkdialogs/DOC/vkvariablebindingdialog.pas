@@ -3,10 +3,10 @@ unit vkvariablebindingdialog;
 interface
 
 uses
-  SysUtils, WinTypes, WinProcs, Messages, Classes, Controls,
+  SysUtils, WinTypes, WinProcs, Messages, Classes, Vcl.Controls,
   StdCtrls,Forms, Dialogs, Variants, Db,  ExtCtrls, Mask,
   MEditBox,DBCtrlsEh,   math, ComCtrls, vkvariablebinding,vkvariable, monitor
-  , DateVk, numbermaskedit, VariantUtils, VkVariableBindingCustom;
+  , DateVk, numbermaskedit, VariantUtils, VkVariableBindingCustom, System.RTTI;
 
 
 
@@ -19,6 +19,8 @@ type
   TItemDbDateTimeEditEh  = TDbDateTimeEditEh;
   TItemMEditBox          = TMEditBox;
   TItemNumberMaskEdit    = TNumberMaskEdit;
+  TWinControlClass = class of TWinControl;
+  TEditVkVariableBindingClass = class of TEditVkVariableBinding;
 
   TEditVkVariableBinding = class(TVkVariableBinding)
   private
@@ -45,6 +47,7 @@ type
     function IndexOfControl(AControl: TWinControl):Integer;
     function GetVkVariableBindingClass: TCustomVkVariableBindingClass; override;
     property Items[Index: Integer]: TEditVkVariableBinding read GetItem write SetItem;
+    class function GetBindinClassgOnTypeControl(ATypeControl:TWinControlClass ): TEditVkVariableBindingClass;
   end;
 
   TMaskEditVkVariableBinding = class(TEditVkVariableBinding)
@@ -56,7 +59,7 @@ type
   private
     procedure OnMyBinding(Sender: TObject);
   public
-    constructor create(AOwner: TPersistent);override;
+    constructor Create(AOwner: TPersistent);override;
 //    class function GetDefaultTypeOfControl: TWinControlClass; override;
   end;
 
@@ -248,6 +251,31 @@ begin
 end;
 
 { TEditVkVariableBindingCollection }
+
+class function TEditVkVariableBindingCollection.GetBindinClassgOnTypeControl(
+  ATypeControl: TWinControlClass): TEditVkVariableBindingClass;
+begin
+   if ATypeControl=TMaskEdit  then
+     Result := TMaskEditVkVariableBinding
+   else
+   if ATypeControl=TComboBox  then
+     Result := TComboBoxVkVariableBinding
+   else
+   if ATypeControl=TCheckBox  then
+     Result := TCheckBoxVkVariableBinding
+   else
+   if ATypeControl=TDbNumberEditEh  then
+     Result := TDbNumberEditEhVkVariableBinding
+   else
+   if ATypeControl=TDbDateTimeEditEh  then
+     Result := TDbDateTimeEditEhVkVariableBinding
+   else
+   if ATypeControl=TNumberMaskEdit  then
+     Result := TNumberMaskEditVariableBinding
+   else
+     Result := TEditVkVariableBinding
+
+end;
 
 function TEditVkVariableBindingCollection.GetItem(AIndex: Integer): TEditVkVariableBinding;
 begin

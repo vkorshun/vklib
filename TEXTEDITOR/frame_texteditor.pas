@@ -556,8 +556,8 @@ begin
     else
       Panels[3].Text := 'OEM';
   end;
-  if length(Memo.Lines[Memo.Carety-1])> Memo.MaxScrollWidth then
-    Memo.MaxScrollWidth := length(Memo.Lines[Memo.Carety-1]);
+//  if length(Memo.Lines[Memo.Carety-1])> Memo.MaxScrollWidth then
+//    Memo.MaxScrollWidth := length(Memo.Lines[Memo.Carety-1]);
 end;
 
 function TFrameTextEditor.CurPosText: String;

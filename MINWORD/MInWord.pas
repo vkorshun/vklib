@@ -9,7 +9,7 @@ interface
 uses
   SysUtils,
   Classes,
-  stdctrls;
+  Vcl.stdctrls;
 
 type
   TDigLevel = (lvlNone, lvlThousand, lvlMillion, lvlBillion);

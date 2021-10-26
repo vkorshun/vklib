@@ -5,7 +5,7 @@ interface
 uses
   SysUtils, Classes, Controls, GridsEh, DBGridEh, Dialogs,DbGridEhImpExp, DateVk,
   windows,DbGridColumnsParamList, strUtils, XLSExportComp, fm_wait,Graphics, Forms,
-   XLSBase, XLSFile, XLSWorkbook, XLSFormat, XLSRects, DB ;
+   XLSBase, XLSFile, XLSWorkbook, XLSFormat, XLSRects, DB, System.UITypes ;
 
 Type
 
@@ -72,8 +72,6 @@ procedure TDbgXlsExport.InternalExportData(aSheetIndex, aRow, aCol: Integer);
 var
   S: TSheet;
   R, C, I: integer;
-  CalcType: TTotalCalcType;
-  CalcRange: AnsiString;
   cFormat: String;
 begin
   { do nothing if not binded to TXLSExportFile }

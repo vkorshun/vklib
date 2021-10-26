@@ -33,15 +33,13 @@ requires
   dbrtl,
   VclSmp,
   vclx,
-  EhLib200,
   vcldb,
   dsnap,
   xmlrtl,
   vclactnband,
-  vkcomponents_xe6,
-  vklib_xe6,
-  vkdialogs_xe6,
-  xf40_d_xe6;
+  vkcomponents270,
+  vkdialogs270,
+  vklib270;
 
 contains
   fm_find in 'fm_find.pas',

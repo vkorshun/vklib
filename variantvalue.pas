@@ -3,7 +3,7 @@ unit variantvalue;
 interface
 
 uses
-  SysUtils, Classes, Controls;
+  SysUtils, Classes, Vcl.Controls;
 
 type
   TCustomVariantValue = class(TObject)

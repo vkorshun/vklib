@@ -7,8 +7,8 @@ unit sqldescription;
 interface
 
 uses
-  SysUtils, Messages, Classes, Controls,
-  StdCtrls,Forms, Dialogs   ;
+  SysUtils, Messages, Classes, Vcl.Controls,
+  Vcl.StdCtrls,Vcl.Forms, Vcl.Dialogs   ;
 
 type
 

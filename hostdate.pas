@@ -3,8 +3,8 @@ unit hostdate;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, DateUtils;
+  Windows, Messages, SysUtils, Variants, Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms,
+  Vcl.Dialogs, Vcl.StdCtrls, DateUtils;
 
 type
    TTimeArray = Array of int64;

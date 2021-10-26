@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   StdCtrls, ExtCtrls, Menus,  SynEdit,
-  SynMemo,frame_texteditor;
+  frame_texteditor;
 
 type
   TFmTextEditor = class(TForm)

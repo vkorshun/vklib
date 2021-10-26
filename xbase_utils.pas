@@ -3,8 +3,8 @@ unit xbase_utils;
 interface
 
 uses
-  SysUtils, WinTypes, WinProcs, Messages, Classes, Controls,StrUtils,
-  StdCtrls,Forms, Dialogs, Variants, winsock, math, Db, variantvalue, Generics.Collections  ;
+  SysUtils, WinTypes, WinProcs, Messages, Classes, Vcl.Controls,StrUtils,
+  Vcl.StdCtrls,Vcl.Forms, Vcl.Dialogs, Variants, winsock, math, Db, variantvalue, Generics.Collections  ;
 
 function XbaseStrToFloat(const aStr:String):Extended;
 function XbaseFloatToStr(const aFloat:Extended):String;

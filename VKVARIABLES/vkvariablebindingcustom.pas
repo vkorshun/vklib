@@ -3,8 +3,8 @@ unit vkvariablebindingcustom;
 interface
 
 uses
-  SysUtils, WinTypes, WinProcs, Messages, Classes, Controls,
-  StdCtrls, Forms, Dialogs, Variants, Db, vkvariable, variantutils;
+  SysUtils, WinTypes, WinProcs, Messages, Classes, Vcl.Controls,
+  Vcl.StdCtrls, Vcl.Forms, Vcl.Dialogs, Variants, Db, vkvariable, variantutils, System.RTTI;
 
 type
   TCustomVkVariableBindingCollection = class;
@@ -23,7 +23,7 @@ type
     FOwnerWhenDummy: TCustomVkVariableBindingCollection;
   public
     property IsDummy: Boolean read FIsDummy;
-    constructor Create(AOwner: TPersistent);virtual;
+    constructor Create(AOwner: TPersistent);reintroduce; Virtual;
     constructor CreateAsDummy(AOwnerWhenDummy: TCustomVkVariableBindingCollection); virtual;
     destructor Destroy; override;
     procedure DoChange(Sender: TObject);
@@ -38,6 +38,8 @@ type
     property Variable: TVkVariable read FVariable;
     property bFromControl:Boolean read FbFromControl;
     property OnBinding: TNotifyEvent read FOnBinding write SetOnBinding;
+    class function isControlHasProperty(const oControl:TControl; const propertyName: String):Boolean;
+
   end;
 
   TCustomVkVariableBindingClass = class of TCustomVkVariableBinding;
@@ -103,6 +105,7 @@ begin
   inherited Create(Collection);
   FVariable := nil;
   FoControl := nil;
+  FCurrentOnChange := nil;
 end;
 
 constructor TCustomVkVariableBinding.CreateAsDummy(AOwnerWhenDummy: TCustomVkVariableBindingCollection);
@@ -125,7 +128,9 @@ begin
   FbFromControl := true;
   try
   if Assigned(FCurrentOnChange) then
-    FCurrentOnChange(Sender)
+  begin
+      FCurrentOnChange(Sender)
+  end
   else
   begin
     begin
@@ -156,6 +161,34 @@ begin
     Result := FVariable.Value
   else
     Result := Unassigned;
+end;
+
+class function TCustomVkVariableBinding.isControlHasProperty(
+  const oControl: TControl; const propertyName: String): Boolean;
+var
+  ctx: TRttiContext;
+  objType: TRttiType;
+  Prop: TRttiProperty;
+  list: TStringList;
+begin
+  list := TStringList.Create;
+  try
+    ctx := TRttiContext.Create;
+    objType := ctx.GetType(oControl.ClassInfo);
+    Result := False;
+    for Prop in objType.GetProperties do
+    begin
+      if Prop.Name.Equals(propertyName) then
+      begin
+        Result := true;
+        break;
+      end;
+    end;
+    //ShowMessage(list.text);
+  finally
+    list.Free;
+  end;
+
 end;
 
 function TCustomVkVariableBinding.IsEqual(Value: TCustomVkVariableBinding): Boolean;

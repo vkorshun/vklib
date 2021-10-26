@@ -7,7 +7,7 @@ unit i_vkinterface;
 interface
 
 uses
-  SysUtils, Classes, Messages, Controls, Forms, Dialogs, DateVk;
+  SysUtils, Classes, Messages, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, DateVk;
 
 const
   WM_SETCHILDWINDOW = WM_USER+501;

@@ -2,7 +2,7 @@ unit monitor;
 
 interface
 uses
-  Windows, Messages, SysUtils, Classes   ;
+  Windows, Messages, SysUtils, Classes, AnsiStrings   ;
 
 //const
 // cFileName='debug_monitor.txt';
@@ -71,7 +71,7 @@ begin
         Fh:=FileCreate(cFileName);
       FileSeek(Fh,0,2);
 //        szStr:=szStr+#13#10;
-      s:= StrPas(szStr)+#13#10;
+      s:= AnsiStrings.StrPas(szStr)+#13#10;
       if Fh>0 then
         FileWrite(Fh,PAnsiChar(s)^,Length(s));
       FileClose(Fh);
@@ -83,7 +83,7 @@ begin
 //  s := StrNew(PChar(v));
   with Stru do begin
     dwData := 579;
-    cbData := StrLen(szStr)+5;
+    cbData := AnsiStrings.StrLen(szStr)+5;
     lpData := szStr;
   end;
   SendMessage(hDbg,WM_COPYDATA, aHandle, LongInt(@Stru));

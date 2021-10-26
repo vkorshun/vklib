@@ -11,7 +11,7 @@ uses
   Windows,  SysUtils, Variants, Classes, Graphics,
   Controls, Dialogs, ComCtrls,Menus,
   ActnPopup, ActnList, ToolWin, ActnMan,
-  ActnCtrls, PlatformDefaultStyleActnCtrls;
+  ActnCtrls, PlatformDefaultStyleActnCtrls, System.Actions;
 
 type
   TTypeDescription =(tdAll,tdPopUpOnly,tdBarOnly);
@@ -129,7 +129,6 @@ procedure TListActionManagerDescription.AddSubDescription(aIndex: Integer; const
 var
   pDescription :PActionManagerDescription;
   pOwner: PActionManagerDescription;
-  List: TList;
 begin
   New(pDescription);
   with pDescription^ do
@@ -193,6 +192,7 @@ procedure TListActionManagerDescription.Delete(aIndex: Integer);
 var p: PActionManagerDescription;
 begin
   p := GetDescription(aIndex);
+  Finalize(p^);
   if Assigned(p.SubItems) then
     FreeAndNil(p.SubItems);
   Dispose(FItems[aIndex]);
@@ -412,7 +412,6 @@ procedure TActionListDescriptionList.AddSubDescription(AIndex: Integer; const AC
 var
   pDescription :PActionListDescriptionItem;
   pOwner: PActionListDescriptionItem;
-  List: TList;
 begin
   New(pDescription);
   with pDescription^ do
@@ -446,17 +445,29 @@ end;
 procedure TActionListDescriptionList.Delete(AIndex: Integer);
 var p: PActionListDescriptionItem;
 begin
-  p := GetDescription(aIndex);
+  p := FItems[AIndex];
   if Assigned(p.SubItems) then
+  begin
+    for var a in p.SubItems do
+    begin
+      FreeAndNil(a);
+    end;
+    p.SubItems.Clear;
     FreeAndNil(p.SubItems);
-  Dispose(FItems[aIndex]);
+  end;
+  Finalize(p^);
+  Dispose(p);
   FItems.Delete(aIndex);
 end;
 
 destructor TActionListDescriptionList.Destroy;
 begin
   while FItems.Count>0 do
+  begin
+    Finalize(FItems[0]^);
     Delete(0);
+  end;
+  FItems.Free;
   inherited;
 end;
 
@@ -466,7 +477,7 @@ begin
 end;
 
 function TActionListDescriptionList.IndexOf(AAction: TAction): Integer;
-var i: integer;
+var
     p: PActionListDescriptionItem;
 begin
 {  for i:=0 to FItems.Count-1 do
@@ -478,6 +489,7 @@ begin
       Break;
     end;
   end;}
+  Result := -1;
   for p in FItems do
   if p.Action=AAction then
   begin

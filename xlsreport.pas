@@ -3,8 +3,8 @@ unit xlsreport;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, ActiveX, ExcelXP, OleServer, DB, Contnrs, DateVk, memtableeh;
+  Windows, Messages, SysUtils, Variants, Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms,
+  Vcl.Dialogs, ActiveX, ExcelXP, Vcl.OleServer, DB, Contnrs, DateVk, memtableeh;
 
 const
   LCID = 1049;

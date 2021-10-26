@@ -2,9 +2,9 @@ unit DateVk ;
 interface
 
 uses
-  SysUtils,Windows,  Messages, Classes, Controls,StrUtils,
-  StdCtrls,Forms, Dialogs, Variants, winsock, math, Db, variantvalue,
-  Generics.Collections, DecimalRounding_JH1  ;
+  SysUtils,Windows,  Messages, Classes, Vcl.Controls,StrUtils,
+  Vcl.StdCtrls,Vcl.Forms, Vcl.Dialogs, Variants, winsock, math, Db, variantvalue,
+  Generics.Collections, DecimalRounding_JH1, AnsiStrings  ;
 
 type
 TMyVariantOnSetValue = procedure(Sender:TObject;aControl:TWinControl;var v:Variant ) of object;
@@ -587,7 +587,7 @@ begin
   WSAStartup ($0101, wsdata);
   try
     gethostname (hostName, sizeof (hostName));
-    StrPCopy(hostName, Name);
+    AnsiStrings.StrPCopy(hostName, Name);
     hostEnt := gethostbyname (hostName);
     if Assigned (hostEnt) then
        if Assigned (hostEnt^.h_addr_list) then

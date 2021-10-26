@@ -16,9 +16,18 @@ object FrameTextEditor: TFrameTextEditor
     Font.Height = -17
     Font.Name = 'Courier New'
     Font.Style = []
+    Font.Quality = fqClearTypeNatural
     PopupMenu = PopupMenu1
     TabOrder = 0
     OnKeyDown = MemoKeyDown
+    CodeFolding.GutterShapeSize = 11
+    CodeFolding.CollapsedLineColor = clGrayText
+    CodeFolding.FolderBarLinesColor = clGrayText
+    CodeFolding.IndentGuidesColor = clGray
+    CodeFolding.IndentGuides = True
+    CodeFolding.ShowCollapsedLine = False
+    CodeFolding.ShowHintMark = True
+    UseCodeFolding = False
     Gutter.Font.Charset = DEFAULT_CHARSET
     Gutter.Font.Color = clWindowText
     Gutter.Font.Height = -13
@@ -131,6 +140,9 @@ object FrameTextEditor: TFrameTextEditor
     Top = 48
   end
   object SynCACSyn1: TSynCACSyn
+    Options.AutoDetectEnabled = False
+    Options.AutoDetectLineLimit = 0
+    Options.Visible = False
     CommentAttri.Foreground = clGrayText
     KeyAttri.Foreground = clNavy
     NumberAttri.Foreground = clGreen

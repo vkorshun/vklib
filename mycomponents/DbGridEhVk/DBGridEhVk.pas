@@ -5,7 +5,7 @@ interface
 
 uses
   SysUtils, Classes, Controls, GridsEh, DBGridEh, Dialogs,DbGridEhImpExp,
-  windows,DbGridColumnsParamList, strUtils, XlsReport, fm_wait, Forms, DbgXlsExport ;
+  windows,DbGridColumnsParamList, strUtils, fm_wait, Forms ;
 
 type
 
@@ -26,7 +26,7 @@ type
     constructor Create(aOwner: TComponent);override;
     destructor Destroy;override;
 //    procedure RefreshUserFliterImages;
-    procedure ReportToExcel(asender:TObject);
+//    procedure ReportToExcel(asender:TObject);
     procedure ReportToCalc;
     procedure ReadDbGridColumnsSize( aList:TDbGridColumnsParamList = nil);// List:TListDbGridColumnsParams);
     procedure SetDbGridColumnsSize(aList: TDbGridColumnsParamList);
@@ -158,7 +158,7 @@ begin
         OnAltP(Self)
       else
 //        SaveDBGridEhToExportFile(TDBGridEhExportAsXLS,self,sDirName+'dbgridrh_'+IntToStr(id_grid)+'.xls',True);
-        reportToExcel(Self);
+        //reportToExcel(Self);
 //      sFileName := ExtractFileDir(Application.Exename)
     end;
   end;
@@ -192,70 +192,6 @@ begin
 
 end;
 
-procedure TDBGridEhVk.ReportToExcel(asender:TObject);
-var FXls: TXlsReport;
-    FmWait: TFmWait;
-    {$ifdef ACTIVEX_FORM}
-    oldhandle: THandle;
-    {$endif}
-     XExp: TDbgXlsExport;
-
-  procedure CreateZag;
-  begin
-    FXls.ExcelWorkSheet.Cells.Item[1,1] := Caption;
-  end;
-
-begin
-
-
-    {$ifdef ACTIVEX_FORM}
-    oldhandle := Application.Handle;
-    Application.Handle := 0;
-    {$endif}
-    XExp := TDbgXlsExport.Create(Self);
-    FmWait := TFmWait.Create(self);
-    FmWait.Caption := 'Ёкспорт в Excel';
-    FmWait.sMessage := 'ќжидайте...';
-    FmWait.Show;
-    try
-      XExp.ExportData(TDbGridEh(Self),0,3,0);
-    finally
-      FreeAndNil(XExp);
-      FmWait.Free;
-//      FXls.free;
-    {$ifdef ACTIVEX_FORM}
-      Application.Handle := oldhandle;
-    {$endif}
-    end;
-{    Exit;
-
-
-    FXls   := TXlsReport.Create(self);
-    FmWait := TFmWait.Create(self);
-    FmWait.Caption := 'Ёкспорт в Excel';
-    FmWait.sMessage := 'ќжидайте...';
-    FmWait.Show;
-    try
-      FXls.Connect;
-      FXls.ExcelApplication.ScreenUpdating[LCID] := False;
-      try
-        FXls.ExportDs(TDbGridEh(aSender).DataSource.DataSet);
-      finally
-        FXls.ExcelApplication.ScreenUpdating[LCID] := True;
-        FXls.ExcelApplication.Visible[LCID] := True;
-        FXls.DisConnect;
-      end; }
-//    finally
-//      FmWait.Free;
-//      FXls.free;
-    {$ifdef ACTIVEX_FORM}
-//      Application.Handle := oldhandle;
-    {$endif}
-//      Close;
-//    end;
-
-
-end;
 
 
 procedure TDBGridEhVk.Find(bContinue: Boolean);
@@ -364,7 +300,6 @@ end;
 procedure TDBGridEhVk.ScrollActiveToRow(Grid: TDBGridEh; ARow: Integer);
 var FTitleOffset, SDistance : Integer;
      NewRect : TRect;
-     RowHeight : Integer;
      NewRow : Integer;
 begin
  with Grid do begin

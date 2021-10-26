@@ -1,12 +1,12 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup>
-        <ProjectGuid>{58F7FF69-3496-45C4-A4C8-BC15636016AA}</ProjectGuid>
+        <ProjectGuid>{4713F8B6-9406-404F-AD11-E8BF2F1B6F68}</ProjectGuid>
     </PropertyGroup>
     <ItemGroup>
-        <Projects Include="dbgridehvkd_xe6.dproj">
+        <Projects Include="dbgridehvkd270.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="..\vkcomponents_xe6.dproj">
+        <Projects Include="..\..\..\TXLSFILE\Source\xf40_d_270.dproj">
             <Dependencies/>
         </Projects>
     </ItemGroup>
@@ -17,32 +17,32 @@
             <Default.Personality/>
         </BorlandProject>
     </ProjectExtensions>
-    <Target Name="dbgridehvkd_xe6">
-        <MSBuild Projects="dbgridehvkd_xe6.dproj"/>
+    <Target Name="dbgridehvkd270">
+        <MSBuild Projects="dbgridehvkd270.dproj"/>
     </Target>
-    <Target Name="dbgridehvkd_xe6:Clean">
-        <MSBuild Projects="dbgridehvkd_xe6.dproj" Targets="Clean"/>
+    <Target Name="dbgridehvkd270:Clean">
+        <MSBuild Projects="dbgridehvkd270.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="dbgridehvkd_xe6:Make">
-        <MSBuild Projects="dbgridehvkd_xe6.dproj" Targets="Make"/>
+    <Target Name="dbgridehvkd270:Make">
+        <MSBuild Projects="dbgridehvkd270.dproj" Targets="Make"/>
     </Target>
-    <Target Name="vkcomponents_xe6">
-        <MSBuild Projects="..\vkcomponents_xe6.dproj"/>
+    <Target Name="xf40_d_270">
+        <MSBuild Projects="..\..\..\TXLSFILE\Source\xf40_d_270.dproj"/>
     </Target>
-    <Target Name="vkcomponents_xe6:Clean">
-        <MSBuild Projects="..\vkcomponents_xe6.dproj" Targets="Clean"/>
+    <Target Name="xf40_d_270:Clean">
+        <MSBuild Projects="..\..\..\TXLSFILE\Source\xf40_d_270.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="vkcomponents_xe6:Make">
-        <MSBuild Projects="..\vkcomponents_xe6.dproj" Targets="Make"/>
+    <Target Name="xf40_d_270:Make">
+        <MSBuild Projects="..\..\..\TXLSFILE\Source\xf40_d_270.dproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="dbgridehvkd_xe6;vkcomponents_xe6"/>
+        <CallTarget Targets="dbgridehvkd270;xf40_d_270"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="dbgridehvkd_xe6:Clean;vkcomponents_xe6:Clean"/>
+        <CallTarget Targets="dbgridehvkd270:Clean;xf40_d_270:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="dbgridehvkd_xe6:Make;vkcomponents_xe6:Make"/>
+        <CallTarget Targets="dbgridehvkd270:Make;xf40_d_270:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

@@ -1,7 +1,7 @@
 unit Vararrayutil;
 
 interface
-uses Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+uses Windows, Messages, SysUtils, Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
   variants, types, varutils;
 
 function Ascan(aV:Variant;k:variant):integer;

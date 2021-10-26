@@ -4,7 +4,7 @@ interface
 
 
 uses
-  Classes, SysUtils, Variants, VariantUtils;
+  Classes, SysUtils, Variants, VariantUtils, System.Generics.Collections, System.Rtti;
 
 const
   SDuplicateVkVariableName = 'Dublicate variable %s';
@@ -69,11 +69,13 @@ type
     property IsDelta: Boolean read FIsDelta write FIsDelta;
   public
     constructor Create(Collection: TCollection); override;
+    destructor Destroy; override;
     constructor CreateAsDummy(AOwnerWhenDummy: TCustomVkVariableCollection); virtual;
     function VarCollection: TCustomVkVariableCollection;
     class function IsEmptyString(const AValue: variant): Boolean;
     class function IsEmptyStringAsDate(const AValue: variant): Boolean;
     procedure Clear;
+    function GetAsType<T>: T;
     property OnChangeVariable:TNotifyEvent read FOnChangevariable write SetOnChangevariable;
     property OnInternalChangeVariable:TNotifyEvent read FOnInternalChangevariable write SetOnInternalChangevariable;
     class var gid: Integer;
@@ -105,7 +107,7 @@ type
     FDummyVar: TCustomVkVariable;
     FOwner: TPersistent;
     FOnChange: TNotifyEvent;
-    FIsChanged: Boolean;
+//    FIsChanged: Boolean;
     function GetVkVariable(const VarName: string): TCustomVkVariable;
     function GetItem(Index: Integer): TCustomVkVariable;
     procedure DeleteVkVariable(AVar: TCustomVkVariable); overload;
@@ -122,7 +124,7 @@ type
     property DummyVar: TCustomVkVariable read FDummyVar;
     property OnChange: TNotifyEvent read FOnChange write FOnChange;
   public
-    constructor Create(Owner: TPersistent); overload;
+    constructor Create(Owner: TPersistent);reintroduce;
     destructor Destroy; override;
     procedure AddItem(const VarName: string; const AValue: TObject);overload;
     procedure AddItem(const VarName: string; const AValue: Variant);overload;
@@ -161,6 +163,18 @@ type
     property DynVar[const VarName: string]: TVkVariable read GetVkVariable; default;
   end;
 
+  TVkVariableCollectionList = class(TComponent)
+  private
+    FList: TList<TVkVariableCollection>;
+    FItems: TList<TVkVariableCollection>;
+  public
+    constructor Create(AOwner:TComponent);override;
+    destructor Destroy; override;
+    property Items:TList<TVkVariableCollection> read FItems;
+  end;
+
+
+
 implementation
 
 uses  FMTBcd, SQLTimSt;
@@ -198,6 +212,12 @@ begin
   FOwnerWhenDummy := AOwnerWhenDummy;
   Inc(gid,1);
   F_id := gid;
+end;
+
+destructor TCustomVkVariable.Destroy;
+begin
+   //-----
+  inherited;
 end;
 
 procedure TCustomVkVariable.DoChangeVariable;
@@ -261,6 +281,12 @@ begin
     Result :=  ''
   else
     Result := FData;
+end;
+
+function TCustomVkVariable.GetAsType<T>: T;
+begin
+  var obj := AsRefObject;
+  Result := TValue.From(obj).AsType<T>;
 end;
 
 function TCustomVkVariable.GetData: Variant;
@@ -555,8 +581,8 @@ end;
 
 destructor TCustomVkVariableCollection.Destroy;
 begin
-  inherited Destroy;
   FreeAndNil(FDummyVar);
+  inherited Destroy;
 end;
 
 function TCustomVkVariableCollection.FindVkVariable(const VarName: string): TCustomVkVariable;
@@ -756,6 +782,20 @@ end;
 function TVkVariableCollection.VarByName(AName: String): TVkVariable;
 begin
   Result := FindVkVariable(AName);
+end;
+
+{ TVkVariableCollectionList }
+
+constructor TVkVariableCollectionList.Create(AOwner: TComponent);
+begin
+  inherited;
+  FItems := TList<TVkVariableCollection>.Create;
+end;
+
+destructor TVkVariableCollectionList.Destroy;
+begin
+  FItems.Free;
+  inherited;
 end;
 
 initialization

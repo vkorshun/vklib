@@ -2,8 +2,8 @@ unit u_xmlinit;
 
 interface
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Controls,Forms,
-  Dialogs, xmldom, XMLIntf, msxmldom, XMLDoc, StdCtrls;
+  Windows, Messages, SysUtils, Variants, Classes, Vcl.Controls, Vcl.Forms,
+  Vcl.Dialogs, xmldom, XMLIntf, msxmldom, XMLDoc, Vcl.StdCtrls;
 
 type
   TTypeNodeXml = (tnxList,tnxValue);
